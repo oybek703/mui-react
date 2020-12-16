@@ -1,8 +1,11 @@
-import React from 'react'
-import './App.css'
+import React from 'react';
+
 const App = () => {
     return (
-        <h1>Full Material UI course</h1>
-    )
-}
-export default App
+        <div>
+         <h1>MUI & REACT</h1>
+        </div>
+    );
+};
+
+export default App;
