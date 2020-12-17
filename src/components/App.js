@@ -17,6 +17,7 @@ const App = () => {
                  <Route  exact path='/revolution' component={() => <h1>Revolution</h1>}/>
                  <Route  exact path='/about' component={() => <h1>About</h1>}/>
                  <Route  exact path='/contact' component={() => <h1>Contact</h1>}/>
+                 <Route  exact path='/estimate' component={() => <h1>Free Estimate</h1>}/>
              </Switch>
             </BrowserRouter>
         </ThemeProvider>
