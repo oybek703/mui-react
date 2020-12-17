@@ -3,7 +3,7 @@ import AppBar from "@material-ui/core/AppBar"
 import useScrollTrigger from "@material-ui/core/useScrollTrigger"
 import Toolbar from "@material-ui/core/Toolbar"
 import {Button, IconButton, List, makeStyles, Menu, SwipeableDrawer, useMediaQuery, useTheme} from "@material-ui/core"
-import logo from '../assets/logo.svg'
+import logo from '../../assets/logo.svg'
 import Tabs from "@material-ui/core/Tabs"
 import Tab from "@material-ui/core/Tab"
 import {Link, withRouter} from "react-router-dom"
@@ -119,7 +119,7 @@ const Header = ({location: {pathname}}) => {
     const routes = [
         {label: 'Home', link: '/'},
         {label: 'Services', link: '/services'},
-        {label: 'The revolution', link: '/revolution'},
+        {label: 'The Revolution', link: '/revolution'},
         {label: 'About Us', link: '/about'},
         {label: 'Contact Us', link: '/contact'},
     ]
