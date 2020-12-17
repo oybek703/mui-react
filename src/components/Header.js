@@ -86,6 +86,9 @@ const useStyles = makeStyles(theme => ({
         '&:hover': {
             opacity: 1
         }
+    },
+    appbar: {
+        zIndex: theme.zIndex.modal + 1
     }
 }))
 
@@ -113,6 +116,13 @@ const Header = ({location: {pathname}}) => {
         {name: 'Mobile App Development', link: '/mobileapps'},
         {name: 'Website Development', link: '/websites'}
     ]
+    const routes = [
+        {label: 'Home', link: '/'},
+        {label: 'Services', link: '/services'},
+        {label: 'The revolution', link: '/revolution'},
+        {label: 'About Us', link: '/about'},
+        {label: 'Contact Us', link: '/contact'},
+    ]
     useEffect(() => {
         switch (pathname) {
             case '/services': setValue(1); setSelectedIndex(0); break
@@ -122,28 +132,31 @@ const Header = ({location: {pathname}}) => {
             case '/revolution': setValue(2); break
             case '/about': setValue(3); break
             case '/contact': setValue(4); break
+            case '/estimate': setValue(5); break
             default: setValue(0)
         }
     }, [setValue, pathname])
     return (
         <Fragment>
             <ElevationScroll>
-                <AppBar>
+                <AppBar className={classes.appbar}>
                     <Toolbar disableGutters>
                         <Button disableRipple component={Link} to='/' className={classes.logoContainer}>
                             <img src={logo} className={classes.logo} alt="company logo"/>
                         </Button>
                         {matches
                             ? (<Fragment>
-                            <Tabs value={value} indicatorColor='secondary'  onChange={handleChange} className={classes.tabContainer}>
-                                <Tab label='Home' component={Link} to='/' className={classes.tab}/>
-                                <Tab  onMouseOver={handleClick} label='Services' component={Link} to='/services' className={classes.tab}/>
-                                <Tab label='The Revolution' component={Link} to='/revolution' className={classes.tab}/>
-                                <Tab label='About Us' component={Link} to='/about' className={classes.tab}/>
-                                <Tab label='Contact Us' component={Link} to='/contact' className={classes.tab}/>
+                            <Tabs value={value}  onChange={handleChange} className={classes.tabContainer}>
+                                {
+                                    routes.map((option, index) =>
+                                        index === 1
+                                            ? <Tab key={index} onMouseOver={handleClick} label={option.label} component={Link} to={option.link} className={classes.tab}/>
+                                            : <Tab key={index} label={option.label} component={Link} to={option.link} className={classes.tab}/>
+                                        )
+                                }
                             </Tabs>
-                            <Button variant='contained' color='secondary' component={Link} to='/estimate' className={classes.estimate}>Free Estimate</Button>
-                            <Menu elevation={0} classes={{paper: classes.menu}} open={open} anchorEl={anchorEl} onClose={handleClose} MenuListProps={{onMouseLeave: handleClose}}>
+                                <Button variant='contained' color='secondary' component={Link} to='/estimate' className={classes.estimate}>Free Estimate</Button>
+                                <Menu  style={{zIndex: 1302}} elevation={0} classes={{paper: classes.menu}} open={open} anchorEl={anchorEl} onClose={handleClose} MenuListProps={{onMouseLeave: handleClose}}>
                                 {
                                     menuOptions.map((option, index) =>
                                         <MenuItem
@@ -163,23 +176,16 @@ const Header = ({location: {pathname}}) => {
                                     onClose={() => setDrawer(false)}
                                     onOpen={() => setDrawer(true)} open={drawer}
                                     classes={{paper: classes.drawerMenu}}>
+                                    <div className={classes.toolBarMargin}/>
                                     <List disablePadding>
-                                        <ListItem selected={value === 0} button onClick={() => setDrawer(false)} component={Link} to='/'>
-                                            <ListItemText className={classes.drawerItem} disableTypography>Home</ListItemText>
-                                        </ListItem>
-                                        <ListItem selected={value === 1} button onClick={() => setDrawer(false)} component={Link} to='/services'>
-                                            <ListItemText className={classes.drawerItem} disableTypography>Services</ListItemText>
-                                        </ListItem>
-                                        <ListItem selected={value === 2} button onClick={() => setDrawer(false)} component={Link} to='/revolution'>
-                                            <ListItemText className={classes.drawerItem} disableTypography>The Revolution</ListItemText>
-                                        </ListItem>
-                                        <ListItem selected={value === 3} button onClick={() => setDrawer(false)} component={Link} to='/about'>
-                                            <ListItemText className={classes.drawerItem} disableTypography>About Us</ListItemText>
-                                        </ListItem>
-                                        <ListItem selected={value === 4} button onClick={() => setDrawer(false)} component={Link} to='/contact'>
-                                            <ListItemText className={classes.drawerItem} disableTypography>Contact Us</ListItemText>
-                                        </ListItem>
-                                        <ListItem selected={value === 5} button className={classes.drawerEstimate} onClick={() => setDrawer(false)} component={Link} to='/estimate'>
+                                        {
+                                            routes.map((option, index) => (
+                                                <ListItem divider key={index} selected={value === index} button onClick={() => setDrawer(false)} component={Link} to={option.link}>
+                                                    <ListItemText className={classes.drawerItem} disableTypography>{option.label}</ListItemText>
+                                                </ListItem>
+                                            ))
+                                        }
+                                        <ListItem className={classes.drawerEstimate} selected={value === 5} button onClick={() => setDrawer(false)} component={Link} to='/estimate'>
                                             <ListItemText className={classes.drawerItem} disableTypography>Free Estimate</ListItemText>
                                         </ListItem>
                                     </List>
