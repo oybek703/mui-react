@@ -2,6 +2,7 @@ import {createMuiTheme} from '@material-ui/core/styles'
 
 const arcBlue = '#0B72B9'
 const arcOrange = '#FFBA60'
+const lightOrange = '#996c3b'
 
 export default createMuiTheme({
     palette: {
@@ -22,6 +23,16 @@ export default createMuiTheme({
             fontSize: '1rem',
             fontWeight: '700',
             textTransform: 'none'
+        },
+        estimate: {
+            fontFamily: 'Pacifico, Trebuchet MS, sans-serif',
+            color: 'white',
+            borderRadius: '50px',
+            textTransform: 'none',
+            backgroundColor: arcOrange,
+            '&:hover': {
+                backgroundColor: lightOrange
+            }
         }
     }
 })

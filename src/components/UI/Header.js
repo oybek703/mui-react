@@ -68,12 +68,9 @@ const useStyles = makeStyles(theme => ({
         minWidth: 10
     },
     estimate: {
+        ...theme.typography.estimate,
         marginLeft: '40px',
-        marginRight: '40px',
-        fontFamily: 'Pacifico, Trebuchet MS, sans-serif',
-        color: 'white',
-        borderRadius: '50px',
-        textTransform: 'none'
+        marginRight: '40px'
     },
     menu: {
         backgroundColor: theme.palette.common.blue,
