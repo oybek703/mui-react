@@ -1,7 +1,7 @@
 import React from 'react'
 import animationData from '../../animations/landinganimation/data'
 import Lottie from 'react-lottie'
-import {Button, Grid, Hidden, makeStyles, Typography} from "@material-ui/core"
+import {Button, Grid, makeStyles, Typography} from "@material-ui/core"
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 
 const useStyles = makeStyles(theme => ( {
@@ -19,7 +19,14 @@ const useStyles = makeStyles(theme => ( {
         borderColor: theme.palette.common.blue,
         [theme.breakpoints.between('xs', 'md')]: {
             marginBottom: 10
+        },
+        '&:hover': {
+            backgroundColor: theme.palette.primary.dark,
+            color: 'white'
         }
+    },
+    landingImage: {
+        overflow: 'hidden'
     }
 }))
 
@@ -34,7 +41,7 @@ const LandingPage = () => {
     }
     const classes = useStyles()
     return (
-        <Grid container justify='center' spacing={4}>
+        <Grid container justify='center'>
             <Grid item container direction='column' sm alignItems='center'>
                 <Grid item>
                     <Typography gutterBottom align='center' variant='h3' color='primary'>Bringing West Coast Technology <br/> to the MidWest</Typography>
@@ -45,7 +52,7 @@ const LandingPage = () => {
                 </Grid>
             </Grid>
             <Grid item sm>
-                <Lottie options={defaultOptions} width={400} height={300}/>
+                <Lottie options={defaultOptions} width='80%' height='100%'/>
             </Grid>
         </Grid>
     )
