@@ -25,7 +25,8 @@ const useStyles = makeStyles(theme => ({
     },
     footerGrid: {
         position:'absolute',
-        zIndex: 10000
+        zIndex: 10000,
+        marginTop: '1em'
     },
     footerLink: {
         fontWeight: '700',

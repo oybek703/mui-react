@@ -4,13 +4,14 @@ import {ThemeProvider} from '@material-ui/core/styles'
 import theme from './UI/Theme'
 import {BrowserRouter, Switch, Route} from "react-router-dom"
 import Footer from "./UI/Footer"
+import LandingPage from "./UI/LandingPage"
 const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <BrowserRouter>
              <Header/>
              <Switch>
-                 <Route  exact path='/' component={() => <h1 style={{height: '400px'}}>Home</h1>}/>
+                 <Route  exact path='/' component={LandingPage}/>
                  <Route  exact path='/services' component={() => <h1>Services</h1>}/>
                  <Route  exact path='/customsoftware' component={() => <h1>Custom Software Development</h1>}/>
                  <Route  exact path='/mobileapps' component={() => <h1>Mobile App Development</h1>}/>
