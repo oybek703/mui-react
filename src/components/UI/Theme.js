@@ -9,7 +9,8 @@ export default createMuiTheme({
     palette: {
         common: {
             blue: `${arcBlue}`,
-            orange: `${arcOrange}`
+            orange: `${arcOrange}`,
+            grey: 'darkgrey'
         },
         primary: {
             main: `${arcBlue}`
@@ -40,10 +41,14 @@ export default createMuiTheme({
             borderWidth: 1,
             color: arcBlue,
             borderColor: arcBlue,
+            backgroundColor: 'transparent',
             '&:hover': {
                 backgroundColor: darkBlue,
                 color: 'white'
             }
+        },
+        darkText: {
+            color: 'darkgrey'
         }
     }
 })
