@@ -23,7 +23,7 @@ const Service = ({title, text, img, subtext}) => {
             <Grid item>
                 <Typography variant='h4' className={classes.title}>{title}</Typography>
                 <Typography gutterBottom variant='subtitle1' className={classes.text}>{text}</Typography>
-                <Typography gutterBottom variant='subtitle1' className={classes.text}>{subtext}</Typography>
+                <Typography gutterBottom variant='subtitle2' className={classes.text}>{subtext}</Typography>
                 <Button variant='outlined' className={classes.learnButton}>Learn More<ArrowRightAltIcon fontSize='small'/></Button>
             </Grid>
             <Grid item>

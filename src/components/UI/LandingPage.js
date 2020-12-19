@@ -21,6 +21,9 @@ const useStyles = makeStyles(theme => ( {
         [theme.breakpoints.between('xs', 'md')]: {
             marginBottom: 10
         }
+    },
+    margin: {
+        marginBottom: 20
     }
 }))
 
@@ -36,8 +39,8 @@ const LandingPage = () => {
     const classes = useStyles()
     return (
         <Container>
-            <Grid container direction='column' justify='center' spacing={5}>
-                <Grid item container justify='center'>
+            <Grid container direction='column' justify='center'>
+                <Grid item container justify='center' className={classes.margin}>
                     <Grid item container direction='column' sm alignItems='center'>
                         <Grid item>
                             <Typography gutterBottom align='center' variant='h3' color='primary'>Bringing West Coast Technology <br/> to the MidWest</Typography>
@@ -51,7 +54,7 @@ const LandingPage = () => {
                         <Lottie options={defaultOptions} width='80%' height='100%'/>
                     </Grid>
                 </Grid>
-                <Grid item container direction='column' alignItems='center' spacing={3}>
+                <Grid item container direction='column' alignItems='center' className={classes.margin}>
                     <Grid item container spacing={2} justify='flex-start'>
                         <Service img={customSoftware}  title='Custom Software Development'
                             text='Save Time. Save Money. Save Energy.'
