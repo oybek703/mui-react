@@ -11,6 +11,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import MenuIcon from '@material-ui/icons/Menu'
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
+import EstimateButton from "./EstimateButton"
 function ElevationScroll(props) {
     const { children} = props
     const trigger = useScrollTrigger({
@@ -68,7 +69,6 @@ const useStyles = makeStyles(theme => ({
         minWidth: 10
     },
     estimate: {
-        ...theme.typography.estimate,
         marginLeft: '40px',
         marginRight: '40px'
     },
@@ -152,7 +152,7 @@ const Header = ({location: {pathname}}) => {
                                         )
                                 }
                             </Tabs>
-                                <Button variant='contained' color='secondary' component={Link} to='/estimate' className={classes.estimate}>Free Estimate</Button>
+                                <EstimateButton extraClasses={classes.estimate}/>
                                 <Menu  style={{zIndex: 1302}} elevation={0} classes={{paper: classes.menu}} open={open} anchorEl={anchorEl} onClose={handleClose} MenuListProps={{onMouseLeave: handleClose}}>
                                 {
                                     menuOptions.map((option, index) =>

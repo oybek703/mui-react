@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const Service = ({title, text, img, subtext}) => {
+const Service = ({title, text, img, subtext, link}) => {
     const classes = useStyles()
     return (
         <Fragment>
@@ -21,7 +21,7 @@ const Service = ({title, text, img, subtext}) => {
                 <Typography variant='h4' className={classes.title}>{title}</Typography>
                 <Typography gutterBottom variant='subtitle1' className={classes.text}>{text}</Typography>
                 <Typography gutterBottom variant='subtitle2' className={classes.text}>{subtext}</Typography>
-                <LearnButton/>
+                <LearnButton link={link}/>
             </Grid>
             <Grid item>
                 <img src={img} alt={`${title} logo`}/>
