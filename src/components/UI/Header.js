@@ -110,7 +110,7 @@ const Header = ({location: {pathname}}) => {
     const menuOptions = [
         {name: 'Services', link: '/services'},
         {name: 'Custom Software Development', link: '/customsoftware'},
-        {name: 'Mobile App Development', link: '/mobileapps'},
+        {name: 'iOS/Android App Development', link: '/mobileapps'},
         {name: 'Website Development', link: '/websites'}
     ]
     const routes = [

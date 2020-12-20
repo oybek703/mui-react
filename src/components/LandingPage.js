@@ -1,17 +1,17 @@
 import React, {Fragment} from 'react'
-import animationData from '../../animations/landinganimation/data'
+import animationData from '../animations/landinganimation/data'
 import Lottie from 'react-lottie'
 import {CardContent, Container, Grid, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
-import Service from "./Service"
-import customSoftware from '../../assets/Custom Software Icon.svg'
-import mobileIcon from '../../assets/mobileIcon.svg'
-import websiteIcon from '../../assets/websiteIcon.svg'
-import revolutionBackground from '../../assets/repeatingBackground.svg'
-import infoBackground from '../../assets/infoBackground.svg'
+import Service from "./UI/Service"
+import customSoftware from '../assets/Custom Software Icon.svg'
+import mobileIcon from '../assets/mobileIcon.svg'
+import websiteIcon from '../assets/websiteIcon.svg'
+import revolutionBackground from '../assets/repeatingBackground.svg'
+import infoBackground from '../assets/infoBackground.svg'
 import Card from "@material-ui/core/Card"
-import LearnButton from "./LearnButton"
-import ActionCall from "./ActionCall"
-import EstimateButton from "./EstimateButton"
+import LearnButton from "./UI/LearnButton"
+import ActionCall from "./UI/ActionCall"
+import EstimateButton from "./UI/EstimateButton"
 
 const useStyles = makeStyles(theme => ( {
     estimate: {
@@ -89,7 +89,7 @@ const LandingPage = () => {
                                 subtext=' Complete digital solutions, from investigation to celebration.'/>
                         </Grid>
                         <Grid item container spacing={4} className={classes.marginBottom} justify={matchSM ? 'center' : 'flex-end'}>
-                            <Service img={mobileIcon} link='/mobileapps' title='Mobile Apps Development'
+                            <Service img={mobileIcon} link='/mobileapps' title='iOS/Android App Development'
                             text='Extend Functionality. Extend Access. Increase Engagement.'
                             subtext='Integrate your web experience or create a standalone web app with either mobile platform.'/>
                         </Grid>

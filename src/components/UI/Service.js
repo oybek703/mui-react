@@ -10,6 +10,14 @@ const useStyles = makeStyles(theme => ({
     },
     text: {
         ...theme.typography.darkText
+    },
+    marginBottom: {
+        marginBottom: '1.5em'
+    },
+    marginLeft: {
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: '1.5em'
+        }
     }
 }))
 
@@ -18,7 +26,7 @@ const Service = ({title, text, img, subtext, link}) => {
     const matchXS = useMediaQuery(theme => theme.breakpoints.down('xs'))
     return (
         <Fragment>
-            <Grid item>
+            <Grid item className={classes.marginBottom}>
                 <Typography align={matchXS ? 'center' : 'left'} variant='h4' className={classes.title}>{title}</Typography>
                 <Typography align={matchXS ? 'center' : 'left'} gutterBottom variant='subtitle1' className={classes.text}>{text}</Typography>
                 <Typography align={matchXS ? 'center' : 'left'} gutterBottom variant='subtitle2' className={classes.text}>{subtext}</Typography>
@@ -26,7 +34,7 @@ const Service = ({title, text, img, subtext, link}) => {
                     <LearnButton link={link}/>
                 </Grid>
             </Grid>
-            <Grid item>
+            <Grid item  className={`${classes.marginLeft} ${classes.marginBottom}`}>
                 <img src={img} alt={`${title} logo`}/>
             </Grid>
         </Fragment>
