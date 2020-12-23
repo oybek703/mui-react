@@ -85,7 +85,7 @@ const CustomSoftware = () => {
                 <Grid container className={classes.marginTop}>
                     <Grid item container xs={matchSM ? 1 : 2} justify='flex-start' alignItems='flex-start'>
                         <Hidden smDown>
-                            <IconButton component={Link} to='/mobileapps' disableRipple>
+                            <IconButton component={Link} to='/websites' disableRipple>
                                 <img src={BackArrow} alt="previous tab"/>
                             </IconButton>
                         </Hidden>
@@ -105,7 +105,7 @@ const CustomSoftware = () => {
                 </Grid>
                     <Grid item xs={matchSM ? 1 : 4} container justify='flex-end' alignItems='flex-start'>
                             <Hidden smDown>
-                                <IconButton component={Link} to='/websites'>
+                                <IconButton component={Link} to='/mobileapps'>
                                     <img  src={ForwardArrow} alt="next tab"/>
                                 </IconButton>
                             </Hidden>
