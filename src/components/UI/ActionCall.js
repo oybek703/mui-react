@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
         width: '100%',
         minHeight: '600px',
         color: 'white',
+        marginTop: '3em',
         backgroundAttachment: 'fixed',
         [theme.breakpoints.down('sm')]: {
             backgroundImage: `url(${mobileBackGround})`,

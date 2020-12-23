@@ -6,6 +6,7 @@ import {BrowserRouter, Switch, Route} from "react-router-dom"
 import Footer from "./UI/Footer"
 import LandingPage from "./LandingPage"
 import Services from "./Services"
+import CustomSoftware from "./CustomSoftware"
 const App = () => {
     return (
         <ThemeProvider theme={theme}>
@@ -14,7 +15,7 @@ const App = () => {
              <Switch>
                  <Route  exact path='/' component={LandingPage}/>
                  <Route  exact path='/services' component={Services}/>
-                 <Route  exact path='/customsoftware' component={() => <h1>Custom Software Development</h1>}/>
+                 <Route  exact path='/customsoftware' component={CustomSoftware}/>
                  <Route  exact path='/mobileapps' component={() => <h1>Mobile App Development</h1>}/>
                  <Route  exact path='/websites' component={() => <h1>Website Development</h1>}/>
                  <Route  exact path='/revolution' component={() => <h1>Revolution</h1>}/>
