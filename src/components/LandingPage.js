@@ -75,7 +75,7 @@ const LandingPage = () => {
                             </Grid>
                             <Grid item container justify='center'>
                                 <EstimateButton extraClasses={classes.estimate}/>
-                                <LearnButton extraClasses={classes.learnButton} link='/services'/>
+                                <LearnButton extraClasses={classes.learnButton} link='/revolution'/>
                             </Grid>
                         </Grid>
                         <Grid item sm>

@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
         ...theme.typography.darkText
     },
     marginTop: {
-        marginTop: '1em'
+        marginTop: '2em'
     },
     icons: {
         width: '3em',
