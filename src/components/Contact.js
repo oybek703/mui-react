@@ -83,7 +83,7 @@ const Contact = () => {
                 }
                 break
             }
-            case 'message': setMessage(value); break;
+            case 'message': setMessage(value); break
             default: break;
         }
     }
@@ -117,22 +117,22 @@ const Contact = () => {
                     </Grid>
                 </Grid>
                 <Grid item container justify='center'>
-                    <form autoComplete='off' noValidate className={classes.form}>
+                    <form autoComplete='off' className={classes.form}>
                         <Grid container direction='column'>
                             <Grid item className={classes.marginBottom}>
-                                <TextField helperText={nameHelperText} error={nameHelperText.length !== 0} value={name} onChange={handleChange} name='name' id='name-input' inputProps={{className: classes.inputColor}} fullWidth type='text' label='Name'/>
+                                <TextField helperText={nameHelperText} error={!!nameHelperText.length} value={name} onChange={handleChange} name='name' id='name-input' inputProps={{className: classes.inputColor}} fullWidth type='text' label='Name'/>
                             </Grid>
                             <Grid item className={classes.marginBottom}>
-                                <TextField value={phone} onChange={handleChange} name='phone' id='phone-input' inputProps={{className: classes.inputColor}} fullWidth label='Phone number'/>
+                                <TextField required helperText={phoneHelperText} error={!!phoneHelperText.length} value={phone} onChange={handleChange} name='phone' id='phone-input' inputProps={{className: classes.inputColor}} fullWidth label='Phone number'/>
                             </Grid>
                             <Grid item className={classes.marginBottom}>
-                                <TextField value={email} onChange={handleChange} name='email' id='email-input' inputProps={{className: classes.inputColor}} fullWidth type='email' label='Email'/>
+                                <TextField required helperText={emailHelperText} error={!!emailHelperText} value={email} onChange={handleChange} name='email' id='email-input' inputProps={{className: classes.inputColor}} fullWidth type='email' label='Email'/>
                             </Grid>
                             <Grid item className={classes.marginBottom}>
-                                <TextField value={message} onChange={handleChange} name='message' id='message-textarea' inputProps={{className: classes.inputColor}} variant='outlined' fullWidth placeholder='Message' multiline rows={3} rowsMax={4}/>
+                                <TextField required value={message} onChange={handleChange} name='message' id='message-textarea' inputProps={{className: classes.inputColor}} variant='outlined' fullWidth placeholder='Message' multiline rows={3} rowsMax={4}/>
                             </Grid>
                             <Grid item container justify='center'>
-                                <Button endIcon={<Icon>send</Icon>} className={classes.sendBtn} color='secondary' variant='contained'>Send Message</Button>
+                                <Button type='submit' disabled={nameHelperText.length !== 0 || emailHelperText.length !== 0 || phoneHelperText.length !== 0} endIcon={<Icon>send</Icon>} className={classes.sendBtn} color='secondary' variant='contained'>Send Message</Button>
                             </Grid>
                         </Grid>
                     </form>
