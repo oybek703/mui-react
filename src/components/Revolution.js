@@ -348,7 +348,7 @@ const Revolution = () => {
                     </Grid>
                 </Container>
             </Grid>
-            <ActionCall/>
+            <ActionCall hidden={true}/>
         </Fragment>
     )
 }

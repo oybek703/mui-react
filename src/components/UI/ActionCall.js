@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const ActionCall = () => {
+const ActionCall = ({hidden}) => {
     const classes = useStyles()
     return (
         <Grid container className={classes.actionBlock} justify='space-around' alignItems='center'>
@@ -42,7 +42,9 @@ const ActionCall = () => {
                         <Typography gutterBottom variant='subtitle2' paragraph>
                             Take advantage of the 21st century.
                         </Typography>
-                        <LearnButton link='/revolution'/>
+                        <Grid hidden={hidden}>
+                            <LearnButton link='/revolution'/>
+                        </Grid>
                     </Grid>
                     <Grid item className={classes.actionEstimate}>
                         <EstimateButton/>
