@@ -39,7 +39,7 @@ const ActionCall = () => {
                             Simple Software. <br/>
                             Revolutionary Results.
                         </Typography>
-                        <Typography gutterBottom variant='subtitle2'>
+                        <Typography gutterBottom variant='subtitle2' paragraph>
                             Take advantage of the 21st century.
                         </Typography>
                         <LearnButton link='/revolution'/>

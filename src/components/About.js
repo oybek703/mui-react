@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import {Avatar, Container, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import history from '../assets/history.svg'
 import avatar from '../assets/founder.jpg'
 import yearbook from '../assets/yearbook.svg'
 import puppy from '../assets/puppy.svg'
+import ActionCall from "./UI/ActionCall"
 const useStyles = makeStyles(theme => ({
     marginTop: {
         marginTop: '1em'
@@ -45,7 +46,8 @@ const About = () => {
     const classes = useStyles()
     const matchSM = useMediaQuery(theme => theme.breakpoints.down('sm'))
     return (
-        <Container>
+        <Fragment>
+            <Container>
             <Grid justify={matchSM ? 'center' : 'flex-start'} container className={classes.marginTop}>
                 <Typography color='primary' align={matchSM ? 'center' : 'left'} variant='h4'>About Us</Typography>
             </Grid>
@@ -102,6 +104,8 @@ const About = () => {
                 </Grid>
             </Grid>
         </Container>
+            <ActionCall/>
+        </Fragment>
     )
 }
 
