@@ -98,7 +98,9 @@ const Contact = () => {
         event.preventDefault()
         try {
             setLoading(true)
-            await axios.get('https://us-central1-mui-react.cloudfunctions.net/sendMail')
+            await axios.get('https://us-central1-mui-react.cloudfunctions.net/sendMail',
+                {params: {name, email, phone, message}
+            })
             setLoading(false)
             setSnackBar({open: true, message: 'Message sent successfully!', color: 'green'})
             setName(''); setEmail(''); setPhone(''); setMessage('')
@@ -172,7 +174,7 @@ const Contact = () => {
                       open={snackBar.open}
                       autoHideDuration={3000}
                       ContentProps={{style: {backgroundColor: snackBar.color}}}
-                      message={<Typography>{snackBar.message}</Typography>}
+                      message={<Typography variant={matchSM ? 'subtitle2' : 'body1'}>{snackBar.message}</Typography>}
                       onClose={handleClose}
                       action={<IconButton disableRipple size='small' color='inherit' onClick={handleClose}><CloseIcon fontSize='small'/></IconButton>}/>
         </Fragment>
