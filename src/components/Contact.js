@@ -13,6 +13,7 @@ import axios from 'axios'
 import CircularProgress from "@material-ui/core/CircularProgress"
 import Snackbar from "@material-ui/core/Snackbar"
 import CloseIcon from '@material-ui/icons/Close'
+import IconButton from "@material-ui/core/IconButton"
 
 const useStyles = makeStyles(theme => ({
     pageContainer: {
@@ -173,7 +174,7 @@ const Contact = () => {
                       ContentProps={{style: {backgroundColor: snackBar.color}}}
                       message={<Typography>{snackBar.message}</Typography>}
                       onClose={handleClose}
-                      action={<Button disableRipple size='small' color='inherit' onClick={handleClose}><CloseIcon fontSize='small'/></Button>}/>
+                      action={<IconButton disableRipple size='small' color='inherit' onClick={handleClose}><CloseIcon fontSize='small'/></IconButton>}/>
         </Fragment>
     )
 }
