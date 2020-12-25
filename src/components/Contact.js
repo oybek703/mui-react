@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {Fragment, useState} from 'react'
 import Grid from "@material-ui/core/Grid"
 import ActionCall from "./UI/ActionCall"
 import {Button, Icon, List, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
@@ -10,6 +10,9 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Link from "@material-ui/core/Link"
 import TextField from "@material-ui/core/TextField"
 import axios from 'axios'
+import CircularProgress from "@material-ui/core/CircularProgress"
+import Snackbar from "@material-ui/core/Snackbar"
+import CloseIcon from '@material-ui/icons/Close'
 
 const useStyles = makeStyles(theme => ({
     pageContainer: {
@@ -45,13 +48,15 @@ const useStyles = makeStyles(theme => ({
 const Contact = () => {
     const matchSM = useMediaQuery(theme => theme.breakpoints.down('sm'))
     const classes = useStyles()
-    const [name, setName] = useState('Oybek')
+    const [loading, setLoading] = useState(false)
+    const [snackBar, setSnackBar] = useState({open: false, color: 'green', message: 'Welcome!'})
+    const [name, setName] = useState('')
     const [nameHelperText, setNameHelperText] = useState('')
-    const [email, setEmail] = useState('user@gmail.com')
+    const [email, setEmail] = useState('')
     const [emailHelperText, setEmailHelperText] = useState('')
-    const [phone, setPhone] = useState('1234-234-234')
+    const [phone, setPhone] = useState('')
     const [phoneHelperText, setPhoneHelperText] = useState('')
-    const [message, setMessage] = useState('hello from Oybek')
+    const [message, setMessage] = useState('')
     const handleChange = event => {
         const {name, value} = event.target
         switch (name) {
@@ -91,15 +96,22 @@ const Contact = () => {
     const handleSubmit = async event => {
         event.preventDefault()
         try {
-            console.log('Loading...')
-            const res = await axios.get('https://us-central1-mui-react.cloudfunctions.net/sendMail')
-            console.log(res)
+            setLoading(true)
+            await axios.get('https://us-central1-mui-react.cloudfunctions.net/sendMail')
+            setLoading(false)
+            setSnackBar({open: true, message: 'Message sent successfully!', color: 'green'})
+            setName(''); setEmail(''); setPhone(''); setMessage('')
         } catch (e) {
             console.error(e.message)
+            setLoading(false)
+            setSnackBar({open: true, message: 'Something went wrong please try again!', color: 'crimson'})
         }
     }
+    const handleClose = () => setSnackBar({...snackBar, open: false})
+    let btnDisableStatus = (loading || name.length === 0 || phone.length === 0 || email.length === 0 || message.length === 0 || nameHelperText.length !== 0 || emailHelperText.length !== 0 || phoneHelperText.length !== 0)
     return (
-        <Grid container className={classes.pageContainer} direction={matchSM ? 'column' : 'row'}>
+        <Fragment>
+            <Grid container className={classes.pageContainer} direction={matchSM ? 'column' : 'row'}>
             <Grid item direction='column' container justify='flex-start' md={3} className={classes.contactPart}>
                 <Grid item container justify='center'>
                     <Grid item>
@@ -134,16 +146,18 @@ const Contact = () => {
                                 <TextField helperText={nameHelperText} error={!!nameHelperText.length} value={name} onChange={handleChange} name='name' id='name-input' inputProps={{className: classes.inputColor}} fullWidth type='text' label='Name'/>
                             </Grid>
                             <Grid item className={classes.marginBottom}>
-                                <TextField required helperText={phoneHelperText} error={!!phoneHelperText.length} value={phone} onChange={handleChange} name='phone' id='phone-input' inputProps={{className: classes.inputColor}} fullWidth label='Phone number'/>
+                                <TextField required helperText={emailHelperText} error={!!emailHelperText} value={email} onChange={handleChange} name='email' id='email-input' inputProps={{className: classes.inputColor}} fullWidth type='email' label='Email'/>
                             </Grid>
                             <Grid item className={classes.marginBottom}>
-                                <TextField required helperText={emailHelperText} error={!!emailHelperText} value={email} onChange={handleChange} name='email' id='email-input' inputProps={{className: classes.inputColor}} fullWidth type='email' label='Email'/>
+                                <TextField required helperText={phoneHelperText} error={!!phoneHelperText.length} value={phone} onChange={handleChange} name='phone' id='phone-input' inputProps={{className: classes.inputColor}} fullWidth label='Phone number'/>
                             </Grid>
                             <Grid item className={classes.marginBottom}>
                                 <TextField required value={message} onChange={handleChange} name='message' id='message-textarea' inputProps={{className: classes.inputColor}} variant='outlined' fullWidth placeholder='Message' multiline rows={3} rowsMax={4}/>
                             </Grid>
                             <Grid item container justify='center'>
-                                <Button type='submit' disabled={name.length === 0 || nameHelperText.length !== 0 || emailHelperText.length !== 0 || phoneHelperText.length !== 0} endIcon={<Icon>send</Icon>} className={classes.sendBtn} color='secondary' variant='contained'>Send Message</Button>
+                                <Button type='submit' disabled={btnDisableStatus} endIcon={loading ? <CircularProgress color='primary' size={25}/> : <Icon>send</Icon>} className={classes.sendBtn} color='secondary' variant='contained'>
+                                    Send Message
+                                </Button>
                             </Grid>
                         </Grid>
                     </form>
@@ -153,6 +167,14 @@ const Contact = () => {
                 <ActionCall/>
             </Grid>
         </Grid>
+            <Snackbar anchorOrigin={{vertical: 'top', horizontal: 'center'}}
+                      open={snackBar.open}
+                      autoHideDuration={3000}
+                      ContentProps={{style: {backgroundColor: snackBar.color}}}
+                      message={<Typography>{snackBar.message}</Typography>}
+                      onClose={handleClose}
+                      action={<Button disableRipple size='small' color='inherit' onClick={handleClose}><CloseIcon fontSize='small'/></Button>}/>
+        </Fragment>
     )
 }
 
