@@ -9,6 +9,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import ListItemText from "@material-ui/core/ListItemText"
 import Link from "@material-ui/core/Link"
 import TextField from "@material-ui/core/TextField"
+import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
     pageContainer: {
@@ -44,13 +45,13 @@ const useStyles = makeStyles(theme => ({
 const Contact = () => {
     const matchSM = useMediaQuery(theme => theme.breakpoints.down('sm'))
     const classes = useStyles()
-    const [name, setName] = useState('')
+    const [name, setName] = useState('Oybek')
     const [nameHelperText, setNameHelperText] = useState('')
-    const [email, setEmail] = useState('')
+    const [email, setEmail] = useState('user@gmail.com')
     const [emailHelperText, setEmailHelperText] = useState('')
-    const [phone, setPhone] = useState('')
+    const [phone, setPhone] = useState('1234-234-234')
     const [phoneHelperText, setPhoneHelperText] = useState('')
-    const [message, setMessage] = useState('')
+    const [message, setMessage] = useState('hello from Oybek')
     const handleChange = event => {
         const {name, value} = event.target
         switch (name) {
@@ -65,7 +66,7 @@ const Contact = () => {
             }
             case 'phone': {
                 setPhone(value)
-                const validPhone = new RegExp(/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/).test(value)
+                const validPhone = new RegExp(/[0-9]/).test(value)
                 if(validPhone) {
                     setPhoneHelperText('')
                 } else {
@@ -85,6 +86,16 @@ const Contact = () => {
             }
             case 'message': setMessage(value); break
             default: break;
+        }
+    }
+    const handleSubmit = async event => {
+        event.preventDefault()
+        try {
+            console.log('Loading...')
+            const res = await axios.get('https://us-central1-mui-react.cloudfunctions.net/sendMail')
+            console.log(res)
+        } catch (e) {
+            console.error(e.message)
         }
     }
     return (
@@ -117,7 +128,7 @@ const Contact = () => {
                     </Grid>
                 </Grid>
                 <Grid item container justify='center'>
-                    <form autoComplete='off' className={classes.form}>
+                    <form autoComplete='off' onSubmit={handleSubmit} className={classes.form}>
                         <Grid container direction='column'>
                             <Grid item className={classes.marginBottom}>
                                 <TextField helperText={nameHelperText} error={!!nameHelperText.length} value={name} onChange={handleChange} name='name' id='name-input' inputProps={{className: classes.inputColor}} fullWidth type='text' label='Name'/>
@@ -132,7 +143,7 @@ const Contact = () => {
                                 <TextField required value={message} onChange={handleChange} name='message' id='message-textarea' inputProps={{className: classes.inputColor}} variant='outlined' fullWidth placeholder='Message' multiline rows={3} rowsMax={4}/>
                             </Grid>
                             <Grid item container justify='center'>
-                                <Button type='submit' disabled={nameHelperText.length !== 0 || emailHelperText.length !== 0 || phoneHelperText.length !== 0} endIcon={<Icon>send</Icon>} className={classes.sendBtn} color='secondary' variant='contained'>Send Message</Button>
+                                <Button type='submit' disabled={name.length === 0 || nameHelperText.length !== 0 || emailHelperText.length !== 0 || phoneHelperText.length !== 0} endIcon={<Icon>send</Icon>} className={classes.sendBtn} color='secondary' variant='contained'>Send Message</Button>
                             </Grid>
                         </Grid>
                     </form>
