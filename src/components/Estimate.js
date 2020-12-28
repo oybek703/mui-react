@@ -360,7 +360,7 @@ const Estimate = () => {
                             </Grid>
                         ))
                     }
-                    <Grid item container justify='space-around'>
+                    <Grid item container justify='space-around' className={`${classes.marginTop} ${classes.marginBottom}`}>
                             <Grid item>
                                 <IconButton onClick={prev} disabled={id === 1}>
                                     <img src={ id === 1 ? backArrowDisabled : backArrow} alt="back"/>
@@ -371,9 +371,6 @@ const Estimate = () => {
                                 <img src={id === 7 ? forwardArrowDisabled : forwardArrow} alt="next"/>
                             </IconButton>
                         </Grid>
-                    </Grid>
-                    <Grid container justify='center' className={`${classes.marginBottom} ${classes.marginTop}`}>
-                        <Button className={classes.estimate}>Get Estimate</Button>
                     </Grid>
                 </Grid>
             </Grid>
