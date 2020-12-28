@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Button, Container, Hidden, IconButton, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
+import {Button, Container, IconButton, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import Lottie from 'react-lottie'
 import animationData from "../animations/estimateAnimation/data.json"
@@ -342,13 +342,13 @@ const Estimate = () => {
                                     <Typography gutterBottom align='center' variant='h5' color='primary'>{question.title}</Typography>
                                     <Typography align='center' paragraph variant='body1' className={classes.darkText}>{question.subtitle}</Typography>
                                 </Grid>
-                                <Grid item container direction={matchSM ? 'column' : 'row'} justify='space-between'>
+                                <Grid item container direction={matchSM ? 'column' : 'row'} justify='space-around'>
                                     {
                                         question.options.map(option => (
                                             <Grid key={option.id} item className={classes.marginBottom}>
                                                 <Grid item>
                                                     <Typography color='primary' paragraph  align='center'>{option.title}</Typography>
-                                                    <Typography variant='subtitle1' className={classes.darkText} align='center'>{option.subtitle}</Typography>
+                                                    <Typography variant='subtitle1' className={classes.darkText} align='center'>{option.subtitle || ' '}</Typography>
                                                 </Grid>
                                                 <Grid item container justify='center'>
                                                     <img className={classes.optionIcon} src={option.icon} alt={option.iconAlt}/>
@@ -361,7 +361,6 @@ const Estimate = () => {
                         ))
                     }
                     <Grid item container justify='space-around'>
-                        <Hidden mdDown>
                             <Grid item>
                                 <IconButton onClick={prev} disabled={id === 1}>
                                     <img src={ id === 1 ? backArrowDisabled : backArrow} alt="back"/>
@@ -372,7 +371,6 @@ const Estimate = () => {
                                 <img src={id === 7 ? forwardArrowDisabled : forwardArrow} alt="next"/>
                             </IconButton>
                         </Grid>
-                        </Hidden>
                     </Grid>
                     <Grid container justify='center' className={`${classes.marginBottom} ${classes.marginTop}`}>
                         <Button className={classes.estimate}>Get Estimate</Button>
