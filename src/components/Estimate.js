@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Button, Container, IconButton, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
+import {Container, IconButton, makeStyles, Typography, useMediaQuery} from "@material-ui/core"
 import Grid from "@material-ui/core/Grid"
 import Lottie from 'react-lottie'
 import animationData from "../animations/estimateAnimation/data.json"
