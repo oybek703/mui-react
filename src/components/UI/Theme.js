@@ -21,7 +21,7 @@ export default createMuiTheme({
     },
     typography: {
         tab: {
-            fontFamily: 'Raleway',
+            fontFamily: 'Raleway, Trebuchet MS, sans-serif',
             fontSize: '1rem',
             fontWeight: '700',
             textTransform: 'none'
@@ -49,6 +49,7 @@ export default createMuiTheme({
         },
         darkText: {
             color: 'darkgrey'
-        }
+        },
+        fontFamily: 'Roboto, Helvetica, Trebuchet MS, sans-serif'
     }
 })
