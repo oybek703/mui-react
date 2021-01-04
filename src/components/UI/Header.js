@@ -199,7 +199,10 @@ const Header = ({location: {pathname}}) => {
                                     <List disablePadding>
                                         {
                                             routes.map((option, index) => (
-                                                <ListItem divider key={index} selected={value === index} button onClick={() => setDrawer(false)} component={Link} to={option.link}>
+                                                <ListItem divider key={index} 
+                                                            selected={value === index} 
+                                                            button onClick={() => setDrawer(false)} 
+                                                            component={Link} to={option.link}>
                                                     <ListItemText className={classes.drawerItem} disableTypography>{option.label}</ListItemText>
                                                 </ListItem>
                                             ))
